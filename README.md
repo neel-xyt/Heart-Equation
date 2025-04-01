@@ -1,6 +1,6 @@
 # Heart Equation Visualization  
   
-This project visualizes a heart-shaped mathematical equation using HTML5 Canvas and JavaScript.  
+This project visualizes a heart-shaped mathematical equation using HTML5 Canvas and JavaScript. [`HeartEquation`](https://neel-xyt.github.io/Heart-Equation/) ;)
   
 ## Formula Used  
   
