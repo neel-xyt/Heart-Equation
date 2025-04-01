@@ -1,0 +1,70 @@
+ html,
+ body {
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   /* Prevents scrolling */
+ }
+
+ #body {
+   background-color: black;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   overflow: hidden;
+   margin: 0;
+   font-family: 'Arial',
+     sans-serif;
+ }
+
+ canvas {
+   background-color: black;
+   display: block;
+   width: 100vw;
+   height: 100vh;
+ }
+
+ #formula {
+   position: absolute;
+   bottom: 50px;
+   left: 50%;
+   transform: translateX(-50%);
+   color: #FF4081;
+   /* Changed to pink-red */
+   font-size: 24px;
+   text-align: center;
+ }
+
+ #kValue {
+   position: absolute;
+   bottom: 20px;
+   left: 50%;
+   transform: translateX(-50%);
+   color: #FF4081;
+   /* Changed to pink-red */
+   font-size: 20px;
+   font-family: 'Arial', sans-serif;
+ }
+
+ #title {
+   position: absolute;
+   top: 40px;
+   /* Adjusted lower to avoid cutting the graph */
+   left: 50%;
+   transform: translateX(-50%);
+   color: #FF4081;
+   font-size: 30px;
+   font-weight: bold;
+   white-space: nowrap;
+   background-color: black;
+   /* Ensures the text background blends */
+   padding: 5px 10px;
+   /* Adds some space around the text */
+ }
+
+ @media (max-width: 600px) {
+   #title {
+     font-size: 20px;
+   }
+ }

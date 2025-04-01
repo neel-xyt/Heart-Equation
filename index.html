@@ -8,167 +8,17 @@
   <!-- Include MathJax for rendering the formula -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    body {
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-    }
-
-    canvas {
-      background-color: black;
-    }
-
-    #formula {
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #FF4081;
-      /* Changed to pink-red */
-      font-size: 24px;
-      text-align: center;
-    }
-
-    #kValue {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #FF4081;
-      /* Changed to pink-red */
-      font-size: 20px;
-      font-family: 'Arial', sans-serif;
-    }
-
-    #title {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #FF4081;
-      font-size: 30px;
-      font-family: 'Arial', sans-serif;
-      font-weight: bold;
-    }
-    #logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 100px; /* Adjust size as needed */
-  height: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div id="title">Heart Equation</div>
   <canvas id="heartCanvas"></canvas>
   <div id="formula">
-    <!--<img src="heart.png" alt="Logo" id="logo">-->
     \( y = |x|^{\frac{2}{3}} + 0.9 \sqrt{|x| k} \sqrt{3 - x^2} \)
   </div>
   <div id="kValue">k = 0.00</div>
-
-  <script>
-    const canvas = document.getElementById("heartCanvas");
-    const ctx = canvas.getContext("2d");
-    const kDisplay = document.getElementById("kValue");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    function heartEquation(x, k) {
-      let term1 = Math.pow(Math.abs(x), 2 / 3);
-      let term2 = 0;
-      if (3 - x * x > 0) {
-        term2 = 0.9 * Math.sin(k * x) * Math.sqrt(3 - x * x);
-      }
-      return term1 + term2;
-    }
-
-    function drawAxes() {
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-
-      // Draw X-axis
-      ctx.beginPath();
-      ctx.strokeStyle = "#00BFFF";
-      ctx.lineWidth = 1;
-      ctx.moveTo(0, centerY);
-      ctx.lineTo(canvas.width, centerY);
-      ctx.stroke();
-
-      // Draw Y-axis
-      ctx.beginPath();
-      ctx.moveTo(centerX, 0);
-      ctx.lineTo(centerX, canvas.height);
-      ctx.stroke();
-
-      // Draw arrows on axes
-      const arrowSize = 10;
-      // X-axis arrows
-      ctx.beginPath();
-      ctx.moveTo(canvas.width - arrowSize, centerY - arrowSize);
-      ctx.lineTo(canvas.width, centerY);
-      ctx.lineTo(canvas.width - arrowSize, centerY + arrowSize);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.moveTo(arrowSize, centerY - arrowSize);
-      ctx.lineTo(0, centerY);
-      ctx.lineTo(arrowSize, centerY + arrowSize);
-      ctx.stroke();
-
-      // Y-axis arrows
-      ctx.beginPath();
-      ctx.moveTo(centerX - arrowSize, arrowSize);
-      ctx.lineTo(centerX, 0);
-      ctx.lineTo(centerX + arrowSize, arrowSize);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.moveTo(centerX - arrowSize, canvas.height - arrowSize);
-      ctx.lineTo(centerX, canvas.height);
-      ctx.lineTo(centerX + arrowSize, canvas.height - arrowSize);
-      ctx.stroke();
-    }
-
-    function drawHeart(k) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw axes first
-      drawAxes();
-
-      // Draw the heart curve
-      ctx.strokeStyle = "#FF4081";
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      for (let i = -2; i <= 2; i += 0.01) {
-        let x = i * 100;
-        let y = -heartEquation(i, k) * 100;
-        if (i === -2) ctx.moveTo(canvas.width / 2 + x, canvas.height / 2 + y);
-        else ctx.lineTo(canvas.width / 2 + x, canvas.height / 2 + y);
-      }
-      ctx.stroke();
-
-      // Update k value display
-      kDisplay.textContent = `k = ${k.toFixed(2)}`;
-    }
-
-    let k = 0;
-    function animate() {
-      k += 0.1;
-      drawHeart(k);
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
