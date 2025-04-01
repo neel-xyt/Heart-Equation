@@ -28,5 +28,5 @@ Where:
 1. Clone this repository:  
   
    ```bash  
-   git clone https://github.com/yourusername/Heart-Equation.git  
+   git clone https://github.com/neel-xyt/Heart-Equation.git
    cd Heart-Equation
